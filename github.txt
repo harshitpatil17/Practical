@@ -1,0 +1,40 @@
+ C:\Users\harshit patil\OneDrive\Desktop\LP-II\Assignment 1> git --version
+git version 2.46.0.windows.1
+PS C:\Users\harshit patil\OneDrive\Desktop\LP-II\Assignment 1> git init
+Initialized empty Git repository in C:/Users/harshit patil/OneDrive/Desktop/LP-II/Assignment 1/.git/
+PS C:\Users\harshit patil\OneDrive\Desktop\LP-II\Assignment 1> git add.
+git: 'add.' is not a git command. See 'git --help'.
+
+The most similar command is
+        add
+PS C:\Users\harshit patil\OneDrive\Desktop\LP-II\Assignment 1> git add .
+PS C:\Users\harshit patil\OneDrive\Desktop\LP-II\Assignment 1> git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   index.html
+        new file:   style.css
+
+PS C:\Users\harshit patil\OneDrive\Desktop\LP-II\Assignment 1> git remote add origin "https://github.com/harshitpatil17/Wad.git"
+PS C:\Users\harshit patil\OneDrive\Desktop\LP-II\Assignment 1> git commit -m "first commit"
+[master (root-commit) 76cfb07] first commit
+ 2 files changed, 80 insertions(+)
+ create mode 100644 index.html
+ create mode 100644 style.css
+PS C:\Users\harshit patil\OneDrive\Desktop\LP-II\Assignment 1> git status
+On branch master
+nothing to commit, working tree clean
+PS C:\Users\harshit patil\OneDrive\Desktop\LP-II\Assignment 1> git push -u origin master
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 999 bytes | 499.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/harshitpatil17/Wad.git
+ * [new branch]      master -> master
+branch 'master' set up to track 'origin/master'.
+PS C:\Users\harshit patil\OneDrive\Desktop\LP-II\Assignment 1> S

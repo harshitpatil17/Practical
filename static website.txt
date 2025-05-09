@@ -1,0 +1,205 @@
+Microsoft Windows [Version 10.0.26100.3775]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\harshit patil>ssh -i C:\Users\harshit patil\Downloads\neww.pem ec2-user@16.16.241.45
+Warning: Identity file C:\Users\harshit not accessible: No such file or directory.
+ssh: Could not resolve hostname patil\\downloads\\neww.pem: No such host is known.
+
+C:\Users\harshit patil>ssh -i "C:\Users\harshit patil\Downloads\neww.pem" ec2-user@16.16.241.45
+The authenticity of host '16.16.241.45 (16.16.241.45)' can't be established.
+ED25519 key fingerprint is SHA256:X2zr5Ia3alORaDQtFQeRrMTmO/om1abWgPvLyhU9p+8.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '16.16.241.45' (ED25519) to the list of known hosts.
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+[ec2-user@ip-172-31-4-102 ~]$ sudo su -
+[root@ip-172-31-4-102 ~]# whoami
+root
+[root@ip-172-31-4-102 ~]# exit
+logout
+[ec2-user@ip-172-31-4-102 ~]$ whoami
+ec2-user
+[ec2-user@ip-172-31-4-102 ~]$ wget https://www.free-css.com/assets/files/free-css-templates/download/page296/oxer.zip
+--2025-05-07 06:40:07--  https://www.free-css.com/assets/files/free-css-templates/download/page296/oxer.zip
+Resolving www.free-css.com (www.free-css.com)... 217.160.0.242, 2001:8d8:100f:f000::28f
+Connecting to www.free-css.com (www.free-css.com)|217.160.0.242|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1703902 (1.6M) [application/zip]
+Saving to: ‘oxer.zip’
+
+oxer.zip                      100%[=================================================>]   1.62M  8.03MB/s    in 0.2s
+
+2025-05-07 06:40:08 (8.03 MB/s) - ‘oxer.zip’ saved [1703902/1703902]
+
+[ec2-user@ip-172-31-4-102 ~]$ ls
+oxer.zip
+[ec2-user@ip-172-31-4-102 ~]$ unzip oxer.zip
+Archive:  oxer.zip
+   creating: oxer-html/
+  inflating: oxer-html/about.html
+  inflating: oxer-html/blog.html
+  inflating: oxer-html/class.html
+   creating: oxer-html/css/
+  inflating: oxer-html/css/bootstrap.css
+  inflating: oxer-html/css/responsive.css
+  inflating: oxer-html/css/style.css
+  inflating: oxer-html/css/style.css.map
+  inflating: oxer-html/css/style.scss
+   creating: oxer-html/images/
+  inflating: oxer-html/images/about-bg.jpg
+  inflating: oxer-html/images/b1.jpg
+  inflating: oxer-html/images/b2.jpg
+  inflating: oxer-html/images/c1.jpg
+  inflating: oxer-html/images/c2.jpg
+  inflating: oxer-html/images/client1.png
+  inflating: oxer-html/images/client2.png
+  inflating: oxer-html/images/facebook.png
+  inflating: oxer-html/images/footer-img.jpg
+  inflating: oxer-html/images/hero-bg.jpg
+  inflating: oxer-html/images/instagram.png
+  inflating: oxer-html/images/left-angle.png
+  inflating: oxer-html/images/left-black-arrow.png
+  inflating: oxer-html/images/linkedin.png
+  inflating: oxer-html/images/location.png
+  inflating: oxer-html/images/logo.png
+  inflating: oxer-html/images/mail.png
+  inflating: oxer-html/images/menu.png
+  inflating: oxer-html/images/next-arrow.png
+  inflating: oxer-html/images/next-grey.png
+  inflating: oxer-html/images/next.png
+  inflating: oxer-html/images/play-icon.png
+  inflating: oxer-html/images/prev-arrow.png
+  inflating: oxer-html/images/prev-grey.png
+  inflating: oxer-html/images/prev.png
+  inflating: oxer-html/images/quote.png
+  inflating: oxer-html/images/right-angle.png
+  inflating: oxer-html/images/right-black-arrow.png
+  inflating: oxer-html/images/search-icon.png
+  inflating: oxer-html/images/telephone.png
+  inflating: oxer-html/images/twitter.png
+  inflating: oxer-html/images/youtube.png
+  inflating: oxer-html/index.html
+   creating: oxer-html/js/
+  inflating: oxer-html/js/bootstrap.js
+  inflating: oxer-html/js/jquery-3.4.1.min.js
+[ec2-user@ip-172-31-4-102 ~]$ ls
+oxer-html  oxer.zip
+[ec2-user@ip-172-31-4-102 ~]$ sudo yum install -y httpd
+Amazon Linux 2023 Kernel Livepatch repository                                           145 kB/s |  16 kB     00:00
+Dependencies resolved.
+========================================================================================================================
+ Package                         Architecture       Version                               Repository               Size
+========================================================================================================================
+Installing:
+ httpd                           x86_64             2.4.62-1.amzn2023                     amazonlinux              48 k
+Installing dependencies:
+ apr                             x86_64             1.7.5-1.amzn2023.0.4                  amazonlinux             129 k
+ apr-util                        x86_64             1.6.3-1.amzn2023.0.1                  amazonlinux              98 k
+ generic-logos-httpd             noarch             18.0.0-12.amzn2023.0.3                amazonlinux              19 k
+ httpd-core                      x86_64             2.4.62-1.amzn2023                     amazonlinux             1.4 M
+ httpd-filesystem                noarch             2.4.62-1.amzn2023                     amazonlinux              14 k
+ httpd-tools                     x86_64             2.4.62-1.amzn2023                     amazonlinux              81 k
+ libbrotli                       x86_64             1.0.9-4.amzn2023.0.2                  amazonlinux             315 k
+ mailcap                         noarch             2.1.49-3.amzn2023.0.3                 amazonlinux              33 k
+Installing weak dependencies:
+ apr-util-openssl                x86_64             1.6.3-1.amzn2023.0.1                  amazonlinux              17 k
+ mod_http2                       x86_64             2.0.27-1.amzn2023.0.3                 amazonlinux             166 k
+ mod_lua                         x86_64             2.4.62-1.amzn2023                     amazonlinux              61 k
+
+Transaction Summary
+========================================================================================================================
+Install  12 Packages
+
+Total download size: 2.3 M
+Installed size: 6.9 M
+Downloading Packages:
+(1/12): apr-util-openssl-1.6.3-1.amzn2023.0.1.x86_64.rpm                                388 kB/s |  17 kB     00:00
+(2/12): apr-util-1.6.3-1.amzn2023.0.1.x86_64.rpm                                        2.0 MB/s |  98 kB     00:00
+(3/12): apr-1.7.5-1.amzn2023.0.4.x86_64.rpm                                             2.3 MB/s | 129 kB     00:00
+(4/12): generic-logos-httpd-18.0.0-12.amzn2023.0.3.noarch.rpm                           935 kB/s |  19 kB     00:00
+(5/12): httpd-2.4.62-1.amzn2023.x86_64.rpm                                              1.7 MB/s |  48 kB     00:00
+(6/12): httpd-filesystem-2.4.62-1.amzn2023.noarch.rpm                                   759 kB/s |  14 kB     00:00
+(7/12): httpd-core-2.4.62-1.amzn2023.x86_64.rpm                                          31 MB/s | 1.4 MB     00:00
+(8/12): libbrotli-1.0.9-4.amzn2023.0.2.x86_64.rpm                                        13 MB/s | 315 kB     00:00
+(9/12): httpd-tools-2.4.62-1.amzn2023.x86_64.rpm                                        2.1 MB/s |  81 kB     00:00
+(10/12): mailcap-2.1.49-3.amzn2023.0.3.noarch.rpm                                       1.4 MB/s |  33 kB     00:00
+(11/12): mod_http2-2.0.27-1.amzn2023.0.3.x86_64.rpm                                     8.2 MB/s | 166 kB     00:00
+(12/12): mod_lua-2.4.62-1.amzn2023.x86_64.rpm                                           2.8 MB/s |  61 kB     00:00
+------------------------------------------------------------------------------------------------------------------------
+Total                                                                                    13 MB/s | 2.3 MB     00:00
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                1/1
+  Installing       : apr-1.7.5-1.amzn2023.0.4.x86_64                                                               1/12
+  Installing       : apr-util-openssl-1.6.3-1.amzn2023.0.1.x86_64                                                  2/12
+  Installing       : apr-util-1.6.3-1.amzn2023.0.1.x86_64                                                          3/12
+  Installing       : mailcap-2.1.49-3.amzn2023.0.3.noarch                                                          4/12
+  Installing       : httpd-tools-2.4.62-1.amzn2023.x86_64                                                          5/12
+  Installing       : libbrotli-1.0.9-4.amzn2023.0.2.x86_64                                                         6/12
+  Running scriptlet: httpd-filesystem-2.4.62-1.amzn2023.noarch                                                     7/12
+  Installing       : httpd-filesystem-2.4.62-1.amzn2023.noarch                                                     7/12
+  Installing       : httpd-core-2.4.62-1.amzn2023.x86_64                                                           8/12
+  Installing       : mod_http2-2.0.27-1.amzn2023.0.3.x86_64                                                        9/12
+  Installing       : mod_lua-2.4.62-1.amzn2023.x86_64                                                             10/12
+  Installing       : generic-logos-httpd-18.0.0-12.amzn2023.0.3.noarch                                            11/12
+  Installing       : httpd-2.4.62-1.amzn2023.x86_64                                                               12/12
+  Running scriptlet: httpd-2.4.62-1.amzn2023.x86_64                                                               12/12
+  Verifying        : apr-1.7.5-1.amzn2023.0.4.x86_64                                                               1/12
+  Verifying        : apr-util-1.6.3-1.amzn2023.0.1.x86_64                                                          2/12
+  Verifying        : apr-util-openssl-1.6.3-1.amzn2023.0.1.x86_64                                                  3/12
+  Verifying        : generic-logos-httpd-18.0.0-12.amzn2023.0.3.noarch                                             4/12
+  Verifying        : httpd-2.4.62-1.amzn2023.x86_64                                                                5/12
+  Verifying        : httpd-core-2.4.62-1.amzn2023.x86_64                                                           6/12
+  Verifying        : httpd-filesystem-2.4.62-1.amzn2023.noarch                                                     7/12
+  Verifying        : httpd-tools-2.4.62-1.amzn2023.x86_64                                                          8/12
+  Verifying        : libbrotli-1.0.9-4.amzn2023.0.2.x86_64                                                         9/12
+  Verifying        : mailcap-2.1.49-3.amzn2023.0.3.noarch                                                         10/12
+  Verifying        : mod_http2-2.0.27-1.amzn2023.0.3.x86_64                                                       11/12
+  Verifying        : mod_lua-2.4.62-1.amzn2023.x86_64                                                             12/12
+
+Installed:
+  apr-1.7.5-1.amzn2023.0.4.x86_64                          apr-util-1.6.3-1.amzn2023.0.1.x86_64
+  apr-util-openssl-1.6.3-1.amzn2023.0.1.x86_64             generic-logos-httpd-18.0.0-12.amzn2023.0.3.noarch
+  httpd-2.4.62-1.amzn2023.x86_64                           httpd-core-2.4.62-1.amzn2023.x86_64
+  httpd-filesystem-2.4.62-1.amzn2023.noarch                httpd-tools-2.4.62-1.amzn2023.x86_64
+  libbrotli-1.0.9-4.amzn2023.0.2.x86_64                    mailcap-2.1.49-3.amzn2023.0.3.noarch
+  mod_http2-2.0.27-1.amzn2023.0.3.x86_64                   mod_lua-2.4.62-1.amzn2023.x86_64
+
+Complete!
+[ec2-user@ip-172-31-4-102 ~]$ sudo systemctl start httpd
+[ec2-user@ip-172-31-4-102 ~]$ sudo mv oxer-html /var/www/html
+[ec2-user@ip-172-31-4-102 ~]$ cd /var/www/html
+[ec2-user@ip-172-31-4-102 html]$ ls
+oxer-html
+[ec2-user@ip-172-31-4-102 html]$ mv oxer-html-html/* .
+mv: cannot stat 'oxer-html-html/*': No such file or directory
+[ec2-user@ip-172-31-4-102 html]$ mvoxer-html/* .
+-bash: mvoxer-html/*: No such file or directory
+[ec2-user@ip-172-31-4-102 html]$ ls
+oxer-html
+[ec2-user@ip-172-31-4-102 html]$ mv oxer-html/* .
+mv: cannot move 'oxer-html/about.html' to './about.html': Permission denied
+mv: cannot move 'oxer-html/blog.html' to './blog.html': Permission denied
+mv: cannot move 'oxer-html/class.html' to './class.html': Permission denied
+mv: cannot move 'oxer-html/css' to './css': Permission denied
+mv: cannot move 'oxer-html/images' to './images': Permission denied
+mv: cannot move 'oxer-html/index.html' to './index.html': Permission denied
+mv: cannot move 'oxer-html/js' to './js': Permission denied
+[ec2-user@ip-172-31-4-102 html]$ sudo mv oxer-html/* .
+[ec2-user@ip-172-31-4-102 html]$ sudo systemctl restart httpd
+[ec2-user@ip-172-31-4-102 html]$ Connection to 16.16.241.45 closed by remote host.
+Connection to 16.16.241.45 closed.
+
+C:\Users\harshit patil>

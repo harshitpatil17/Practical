@@ -1,0 +1,174 @@
+
+harshit patil@LAPTOP-7MBEHST1 MINGW64 ~/OneDrive/Desktop/vagrant
+$ vagrant up
+Bringing machine 'default' up with 'virtualbox' provider...
+==> default: Checking if box 'ubuntu/bionic64' version '20230607.0.5' is up to date...
+==> default: Machine already provisioned. Run `vagrant provision` or use the `--provision`
+==> default: flag to force provisioning. Provisioners marked to run always will still run.
+
+harshit patil@LAPTOP-7MBEHST1 MINGW64 ~/OneDrive/Desktop/vagrant
+$ vagrant ssh
+Welcome to Ubuntu 18.04.6 LTS (GNU/Linux 4.15.0-212-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Tue May  6 10:25:46 UTC 2025
+
+  System load:  0.01              Users logged in:       1
+  Usage of /:   4.6% of 38.70GB   IP address for enp0s3: 10.0.2.15
+  Memory usage: 33%               IP address for enp0s8: 192.168.56.33
+  Swap usage:   0%                IP address for enp0s9: 192.168.31.17
+  Processes:    120
+
+
+Expanded Security Maintenance for Infrastructure is not enabled.
+
+14 updates can be applied immediately.
+11 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+158 additional security updates can be applied with ESM Infra.
+Learn more about enabling ESM Infra service for Ubuntu 18.04 at
+https://ubuntu.com/18-04
+
+New release '20.04.6 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+Last login: Tue May  6 10:17:33 2025 from 10.0.2.2
+vagrant@ubuntu-bionic:~$ sudo - i
+sudo: -: command not found
+vagrant@ubuntu-bionic:~$ sudo -i
+root@ubuntu-bionic:~# vi /etc/hostname
+root@ubuntu-bionic:~# hostname wordpress
+root@ubuntu-bionic:~# sudo -i
+root@wordpress:~# sudo apt update
+Hit:1 http://security.ubuntu.com/ubuntu bionic-security InRelease
+Hit:2 http://archive.ubuntu.com/ubuntu bionic InRelease
+Hit:3 http://archive.ubuntu.com/ubuntu bionic-updates InRelease
+Hit:4 http://archive.ubuntu.com/ubuntu bionic-backports InRelease
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+14 packages can be upgraded. Run 'apt list --upgradable' to see them.
+root@wordpress:~# sudo apt install apache2 \
+>                  ghostscript \
+>                  libapache2-mod-php \
+>                  mysql-server \
+>                  php \
+>                  php-bcmath \
+>                  php-curl \
+>                  php-imagick \
+>                  php-intl \
+>                  php-json \
+>                  php-mbstring \
+>                  php-mysql \
+>                  php-xml \
+>                  php-zip -y
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+libapache2-mod-php is already the newest version (1:7.2+60ubuntu1).
+php is already the newest version (1:7.2+60ubuntu1).
+php-curl is already the newest version (1:7.2+60ubuntu1).
+php-mysql is already the newest version (1:7.2+60ubuntu1).
+php-bcmath is already the newest version (1:7.2+60ubuntu1).
+php-intl is already the newest version (1:7.2+60ubuntu1).
+php-json is already the newest version (1:7.2+60ubuntu1).
+php-mbstring is already the newest version (1:7.2+60ubuntu1).
+php-xml is already the newest version (1:7.2+60ubuntu1).
+php-zip is already the newest version (1:7.2+60ubuntu1).
+apache2 is already the newest version (2.4.29-1ubuntu4.27).
+ghostscript is already the newest version (9.26~dfsg+0-0ubuntu0.18.04.18).
+mysql-server is already the newest version (5.7.42-0ubuntu0.18.04.1).
+php-imagick is already the newest version (3.4.3~rc2-2ubuntu4.1).
+0 upgraded, 0 newly installed, 0 to remove and 14 not upgraded.
+root@wordpress:~# sudo mkdir -p /srv/www
+root@wordpress:~# sudo chown www-data: /srv/www
+root@wordpress:~# curl https://wordpress.org/latest.tar.gz | sudo -u www-data tar zx -C /srv/www
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 25.6M  100 25.6M    0     0   688k      0  0:00:38  0:00:38 --:--:-- 1916k
+root@wordpress:~# vi /etc/apache2/sites-available/wordpress.conf
+root@wordpress:~# sudo a2ensite wordpress
+Enabling site wordpress.
+To activate the new configuration, you need to run:
+  systemctl reload apache2
+root@wordpress:~# sudo a2enmod rewrite
+Enabling module rewrite.
+To activate the new configuration, you need to run:
+  systemctl restart apache2
+root@wordpress:~# sudo a2dissite 000-default
+Site 000-default disabled.
+To activate the new configuration, you need to run:
+  systemctl reload apache2
+root@wordpress:~# sudo service apache2 reload
+root@wordpress:~# $ sudo mysql -u root
+$: command not found
+root@wordpress:~# sudo mysql -u root
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 2
+Server version: 5.7.42-0ubuntu0.18.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> CREATE DATABASE wordpress;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> CREATE USER wordpress@localhost IDENTIFIED BY 'admin';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql>  GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER ON wordpress.*TO wordpress@localhost;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> quit
+Bye
+root@wordpress:~# sudo -u www-data cp /srv/www/wordpress/wp-config-sample.php /srv/www/wordpress/wp-config.php
+root@wordpress:~# sudo -u www-data sed -i 's/database_name_here/wordpress/' /srv/www/wordpress/wp-config.php
+sudo -u www-data sed -i 's/username_here/wordpress/' /srv/www/wordpress/wp-config.php
+sudo -u www-data sed -i 's/password_here/admin/' /srv/www/wordpress/wp-config.phproot@wordpress:~# sudo -u www-data sed -i 's/username_here/wordpress/' /srv/www/wordpress/wp-config.php
+root@wordpress:~# sudo -u www-data sed -i 's/password_here/admin/' /srv/www/wordpress/wp-config.php
+root@wordpress:~# sudo -u www-data nano /srv/www/wordpress/wp-config.php
+Unable to create directory /root/.local/share/nano/: Permission denied
+It is required for saving/loading search history or cursor positions.
+
+Press Enter to continue
+
+vagrant@wordpress:~$ ip addr show
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 02:3b:7b:b7:3b:2d brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic enp0s3
+       valid_lft 83859sec preferred_lft 83859sec
+    inet6 fe80::3b:7bff:feb7:3b2d/64 scope link
+       valid_lft forever preferred_lft forever
+3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:cc:4e:5a brd ff:ff:ff:ff:ff:ff
+    inet 192.168.56.33/24 brd 192.168.56.255 scope global enp0s8
+       valid_lft forever preferred_lft forever
+    inet6 fe80::a00:27ff:fecc:4e5a/64 scope link
+       valid_lft forever preferred_lft forever
+4: enp0s9: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:b8:0d:20 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.31.17/24 brd 192.168.31.255 scope global dynamic enp0s9
+       valid_lft 26264sec preferred_lft 26264sec
+    inet6 2409:40c2:123f:af92:a00:27ff:feb8:d20/64 scope global dynamic mngtmpaddr noprefixroute
+       valid_lft 14248sec preferred_lft 14248sec
+    inet6 fe80::a00:27ff:feb8:d20/64 scope link
+       valid_lft forever preferred_lft forever

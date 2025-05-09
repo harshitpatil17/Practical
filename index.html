@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JQuery Mobile</title>
+  <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+  <script src="js/jquery-1.11.3.min.js"></script>
+  <script src="js/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+  <!--Home page-->
+  <div data-role="page" id="home">
+    <div data-role="header">
+      <h1>My Cafe</h1>
+    </div>
+
+  <div data-role="content">
+    <h2 style="text-align: center;">Welcome!</h2>
+    <p style="text-align: center;">Enjoy your best coffee and snacks</p>
+    <a href="#menu" class="ui-btn">View Menu</a>
+    <a href="#contact" class="ui-btn">Contact us</a>
+  </div>
+
+  <div data-role="footer">
+    <h4>&copy;2025 My Cafe</h4>
+  </div>
+</div>
+
+<!--Menu page-->
+<div data-role="page" id="menu">
+  <div data-role="header">
+    <h1>Welcome to our Menu</h1>
+  </div>
+
+  <div data-role="content">
+    <ul data-role="listview">
+      <li>Cold coffee - $35</li>
+      <li>Tea - $20</li>
+      <li>Cold coffee with crush - $40</li>
+      <li>Sandwich - $45</li>
+      <li>French fries - $60</li>
+    </ul>
+    <a href="#home" class="ui-btn">Back to Home</a>
+  </div>
+
+  <div data-role="footer">
+    <h4>&copy;2025 My Cafe</h4>
+  </div>
+</div>
+
+<!--Contact-->
+<div data-role="page" id="contact">
+  <div data-role="header">
+    <h1>Contact us</h1>
+  </div>
+
+<div data-role="content">
+  <p><strong>Phone:</strong>+91-7876765665</p>
+  <p><strong>Email:</strong>mycafe@gmail.com</p>
+  <p><strong>Address:</strong>101-ShopAbc,Street 20,City</p>
+  <a href="#home" class="ui-btn">Back to home</a>
+</div>
+
+<div data-role="footer">
+  <h4>&copy;2025 My Cafe</h4>
+</div>
+</div>
+
+</div>
+
+
+</body>
+</html>
